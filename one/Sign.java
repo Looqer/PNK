@@ -2,7 +2,6 @@ package one;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public enum Sign {
     ROCK,
@@ -23,7 +22,7 @@ public enum Sign {
                 switch (other){
                     case ROCK:
                         presentResult = Result.TIE;
-                    break;
+                        break;
                     case PAPER:
                         presentResult = Result.WIN;
                         break;
@@ -59,6 +58,7 @@ public enum Sign {
                 }
                 break;
         }
+        System.out.println(presentResult);
         return presentResult;
     }
 
