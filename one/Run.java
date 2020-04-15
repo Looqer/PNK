@@ -1,6 +1,9 @@
 package one;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Run {
 
@@ -9,9 +12,11 @@ public class Run {
         Sign humanChoiceSign = null;
         String humanChoice = "null";
 
-
+        /* --Other game modes are commented-- */
+        
         //RockPaperScissors machineChoice = new RandomRockPaperScissors();
-        RockPaperScissors machineChoice = new SmartRockPaperScissors();
+        //RockPaperScissors machineChoice = new SmartRockPaperScissors();
+        RockPaperScissors machineChoice = new SmarterRockPaperScissors();
 
         while (humanChoice != "0") {
 
@@ -23,37 +28,47 @@ public class Run {
 
         if(humanChoice.equals("0") || humanChoice.equals("1") || humanChoice.equals("2") || humanChoice.equals("3")) {
 
-
-            int i = Integer.parseInt(humanChoice);
-
-
                 switch (humanChoice) {
                     case "1":
                         humanChoiceSign = Sign.PAPER;
                         break;
+
                     case "2":
                         humanChoiceSign = Sign.SCISSORS;
                         break;
+
                     case "3":
                         humanChoiceSign = Sign.ROCK;
                         break;
+
                     case "0":
                         humanChoiceSign = null;
                         System.out.println("Exit game");
+                        System.exit(0);
                         break;
                 }
+
+
                 machineChoice.play(humanChoiceSign);
                 System.out.println("Player wins: " + machineChoice.getPlayerWins());
                 System.out.println("Player loses: " + machineChoice.getMachineWins());
                 System.out.println("Ties: " + machineChoice.getTies());
+                System.out.println("----------------");
+
+                //System.out.println(SmarterRockPaperScissors.mySignList);
+                //System.out.println(SmarterRockPaperScissors.mySignList.get(0));
+
+
+
 
 
         }
+
         else {
-            //humanChoiceSign = null;
             System.out.println("Error - Wrong input data");
         }
+
     }
-        System.exit(0);
+
     }
 }

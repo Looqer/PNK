@@ -16,7 +16,6 @@ abstract class RockPaperScissors {
                 aiwins += 1;
                 break;
         }
-
     }
 
     public int getPlayerWins(){

@@ -3,9 +3,7 @@ package one;
 public class SmartRockPaperScissors extends RockPaperScissors {
 
     Result oldResult = null;
-    Sign aichoice;
-    Sign lastAiChoice, winOver, oldPlayerChoice;
-
+    Sign aichoice, lastAiChoice, oldPlayerChoice;
 
     @Override
     public void play(Sign player) {
@@ -13,6 +11,7 @@ public class SmartRockPaperScissors extends RockPaperScissors {
         if (oldResult == null || oldResult == Result.TIE){
             aichoice = Sign.getRandom();
         }
+
         else if (oldResult == Result.WIN){
 
             aichoice = aichoice.getSignWinningOver(oldPlayerChoice);
@@ -35,8 +34,6 @@ public class SmartRockPaperScissors extends RockPaperScissors {
 
         }
 
-
-
         Sign playerchoice = player;
         oldPlayerChoice = player;
 
@@ -46,6 +43,5 @@ public class SmartRockPaperScissors extends RockPaperScissors {
         oldResult = aichoice.getResultVs(playerchoice);
         this.updateStats(oldResult);
         lastAiChoice = aichoice;
-
     }
 }
