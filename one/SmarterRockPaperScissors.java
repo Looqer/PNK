@@ -48,7 +48,7 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
         }
 
         aichoice = Sign.getRandom();
-
+        System.out.println("Start procesu");
         for (int i = 0; i < mySignList.size() - 3; i++) {
             if (playerSignList[0] == mySignList.get(i) && playerSignList[1] == mySignList.get(i + 1) && playerSignList[2] == mySignList.get(i + 2) && playerSignList[3] == mySignList.get(i + 3)) {
                 if ((i + 4) < mySignList.size()) {
@@ -73,9 +73,6 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                     }
                 }
             }
-            else {
-                    pattern = 0;
-                }
         }
         if (pattern == 0) {
             for (int i = 0; i < mySignList.size() - 2; i++) {
@@ -101,9 +98,6 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                             }
                         }
                     }
-                }
-                else {
-                    pattern = 0;
                 }
             }
         }
@@ -132,9 +126,6 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                             }
                         }
                     }
-                }
-                else {
-                    pattern = 0;
                 }
             }
         }
@@ -166,7 +157,8 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                     }
                 }
             }
-
+        }
+            System.out.println("Koniec procesu");
 
             Sign playerchoice = player;
 
@@ -200,4 +192,3 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
 
         }
     }
-}
