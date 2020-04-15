@@ -1,9 +1,6 @@
 package one;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.IOException;
 
 public class Run {
 
@@ -13,10 +10,13 @@ public class Run {
         String humanChoice = "null";
 
         /* --Other game modes are commented-- */
-        
         //RockPaperScissors machineChoice = new RandomRockPaperScissors();
         //RockPaperScissors machineChoice = new SmartRockPaperScissors();
         RockPaperScissors machineChoice = new SmarterRockPaperScissors();
+
+        System.out.println("Rock, paper, scissors game. Data for -Smarter- mode will be saved");
+        System.out.println("to D:->test->test.ser (windows)  Choose your sign: ");
+        System.out.println("");
 
         while (humanChoice != "0") {
 
@@ -57,18 +57,10 @@ public class Run {
 
                 //System.out.println(SmarterRockPaperScissors.mySignList);
                 //System.out.println(SmarterRockPaperScissors.mySignList.get(0));
-
-
-
-
-
         }
-
         else {
             System.out.println("Error - Wrong input data");
+            }
         }
-
-    }
-
     }
 }

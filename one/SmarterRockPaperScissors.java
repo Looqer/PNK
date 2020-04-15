@@ -166,7 +166,5 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
         } catch (IOException i) {
             i.printStackTrace();
         }
-
-
     }
 }
