@@ -27,34 +27,21 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                 ins.close();
                 fileIn.close();
             } catch (IOException i) {
-                i.printStackTrace();
+                System.out.println("Sign file not found");
             } catch (ClassNotFoundException c) {
                 System.out.println("Sign file not found");
-                c.printStackTrace();
             }
         } // load sign array
 
-        playerSignList[0] = playerSignList[1];
-        playerSignList[1] = playerSignList[2];
-        playerSignList[2] = playerSignList[3];
-        playerSignList[3] = player;
-
-
-        System.out.println("msl: " + mySignList.size());
         if (mySignList.size() < 5 || iteration < 4) {
             System.out.println("Not enough data");
-        } else {
-            System.out.println(playerSignList[0].toString() + "*" + playerSignList[1].toString() + "*" + playerSignList[2].toString() + "*" + playerSignList[3].toString());
         }
 
         aichoice = Sign.getRandom();
-        System.out.println("Start procesu");
         for (int i = 0; i < mySignList.size() - 3; i++) {
             if (playerSignList[0] == mySignList.get(i) && playerSignList[1] == mySignList.get(i + 1) && playerSignList[2] == mySignList.get(i + 2) && playerSignList[3] == mySignList.get(i + 3)) {
                 if ((i + 4) < mySignList.size()) {
-                    System.out.println("pattern 4: " + (i + 1));
                     pattern++;
-                    System.out.println("win by " + aichoice.getSignWinningOver(mySignList.get(i + 4)).toString());
                     if (aichoice.getSignWinningOver(mySignList.get(i + 4)) == Sign.PAPER) {
                         patternP++;
                         if (patternP > patternR && patternP > patternS) {
@@ -78,9 +65,7 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
             for (int i = 0; i < mySignList.size() - 2; i++) {
                 if (playerSignList[1] == mySignList.get(i) && playerSignList[2] == mySignList.get(i + 1) && playerSignList[3] == mySignList.get(i + 2)) {
                     if ((i + 3) < mySignList.size()) {
-                        System.out.println("pattern 3: " + (i + 1));
                         pattern++;
-                        System.out.println("win by " + aichoice.getSignWinningOver(mySignList.get(i + 3)).toString());
                         if (aichoice.getSignWinningOver(mySignList.get(i + 3)) == Sign.PAPER) {
                             patternP++;
                             if (patternP > patternR && patternP > patternS) {
@@ -106,9 +91,7 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
             for (int i = 0; i < mySignList.size() - 1; i++) {
                 if (playerSignList[2] == mySignList.get(i) && playerSignList[3] == mySignList.get(i + 1)) {
                     if ((i + 2) < mySignList.size()) {
-                        System.out.println("pattern 2: " + (i + 1));
                         pattern++;
-                        System.out.println("win by " + aichoice.getSignWinningOver(mySignList.get(i + 2)).toString());
                         if (aichoice.getSignWinningOver(mySignList.get(i + 2)) == Sign.PAPER) {
                             patternP++;
                             if (patternP > patternR && patternP > patternS) {
@@ -135,9 +118,7 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                 if (playerSignList[3] == mySignList.get(i)) {
 
                     if ((i + 1) < mySignList.size()) {
-                        System.out.println("pattern 1: " + (i + 1));
                         pattern++;
-                        System.out.println("win by " + aichoice.getSignWinningOver(mySignList.get(i + 1)).toString());
                         if (aichoice.getSignWinningOver(mySignList.get(i + 1)) == Sign.PAPER) {
                             patternP++;
                             if (patternP > patternR && patternP > patternS) {
@@ -158,37 +139,34 @@ public class SmarterRockPaperScissors extends RockPaperScissors {
                 }
             }
         }
-            System.out.println("Koniec procesu");
 
-            Sign playerchoice = player;
+        playerSignList[0] = playerSignList[1];
+        playerSignList[1] = playerSignList[2];
+        playerSignList[2] = playerSignList[3];
+        playerSignList[3] = player;
 
-            mySignList.add(player);
-            System.out.println(mySignList.get(iteration));
+        Sign playerchoice = player;
 
-            System.out.println("human: " + playerchoice.toString());
-            System.out.println("machine: " + aichoice.toString());
+        mySignList.add(player);
 
-            System.out.println(SmarterRockPaperScissors.mySignList);
+        System.out.println("human: " + playerchoice.toString());
+        System.out.println("machine: " + aichoice.toString());
 
-            oldResult = aichoice.getResultVs(playerchoice);
-            this.updateStats(oldResult);
+        oldResult = aichoice.getResultVs(playerchoice);
+        this.updateStats(oldResult);
+        iteration++;
 
-
-            iteration++;
-            System.out.println(iteration);
-
-
-            try {
-                FileOutputStream fileOut = new FileOutputStream("D:\\test\\test.ser");
-                ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(SmarterRockPaperScissors.mySignList);
-                out.close();
-                fileOut.close();
-                System.out.println("Serialized data is saved in test folder");
-            } catch (IOException i) {
-                i.printStackTrace();
-            }
-
-
+        try {
+            FileOutputStream fileOut = new FileOutputStream("D:\\test\\test.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(SmarterRockPaperScissors.mySignList);
+            out.close();
+            fileOut.close();
+            //System.out.println("Data saved");
+        } catch (IOException i) {
+            i.printStackTrace();
         }
+
+
     }
+}
